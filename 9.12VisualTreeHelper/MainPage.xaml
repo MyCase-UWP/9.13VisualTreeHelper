@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="_9._12VisualTreeHelper.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_9._12VisualTreeHelper"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView Name="BoxList" ItemsSource="{Binding Boxes}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="Box">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button Name="DeleteBoxButton" Content="{Binding Name}" Grid.Row="0" Click="DeleteBoxButton_Click" />
+                        <ListView Name="JarList" Grid.Row="1" ItemsSource="{Binding Jars}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Button Name="DeleteJarButton" Content="{Binding Name}" Grid.Row="0" Click="DeleteJarButton_Click" />
+                                        <ListView Name="LolliesList" Grid.Row="1" ItemsSource="{Binding Lollies}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Button Name="DeleteLollyButton" Content="{Binding Name}" Click="DeleteLollyButton_Click" />
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
